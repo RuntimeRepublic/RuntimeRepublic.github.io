@@ -1,6 +1,6 @@
 # Work cards
 Register for RuntimeRepublic/RuntimeRepublic.github.io. Every card adds its own line
-here as its first step. Next free number: RRW-CWC-012.
+here as its first step. Next free number: RRW-CWC-013.
 
 | ID | Title | Manager | Agent (named by James) | Status |
 |---|---|---|---|---|
@@ -14,4 +14,5 @@ here as its first step. Next free number: RRW-CWC-012.
 | RRW-CWC-008 | Not used (combined into RRW-CWC-007) | Claude | — | Retired |
 | RRW-CWC-009 | Join page "Where we are" section and weekly history page | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-010 | Join page "What is shared, and with whom" section | Claude | Civics Dashboard 01 | Merged |
-| RRW-CWC-011 | Latest press release on join page and past press releases page | Claude | Civics Dashboard 01 | In review |
+| RRW-CWC-011 | Latest press release on join page and past press releases page | Claude | Civics Dashboard 01 | Merged |
+| RRW-CWC-012 | Runtime Republic landing page and system pictures page | Claude | Civics Dashboard 01 | In review |
