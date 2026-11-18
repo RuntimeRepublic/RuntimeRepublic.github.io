@@ -21,7 +21,7 @@ footer{margin-top:3rem;color:#555;font-size:.9rem}
 </style>
 </head>
 <body>
-<p><a href="../">← Join the challenge</a> · <a href="../teams/">Teams</a> · <a href="../dashboard/">Team dashboard</a> · <a href="../codes/">Cheat codes</a></p>
+<p><a href="../">← Join the challenge</a> · <a href="../teams/">Teams</a> · <a href="../dashboard/">Team dashboard</a> · <a href="../codes/">Cheat codes</a> · <a href="../onboard/">Bring your group</a></p>
 <h1>Team Registry</h1>
 <p>Every Runtime Republic team is listed here once it is registered. A team that is not on this page is not a Runtime Republic team. Each team speaks only for itself.</p>
 <p class="note" id="asof">Read live from the <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/blob/main/Registry/teams.csv">registry file</a>. Snapshot below: November 18, 2026.</p>
@@ -29,20 +29,14 @@ footer{margin-top:3rem;color:#555;font-size:.9rem}
 <div id="list">
 <div class="team">
 <h3><svg role="img" aria-label="United States flag" width="30" height="20" viewBox="0 0 30 20" style="border:1px solid #ccc;border-radius:2px"><rect width="30" height="20" fill="#fff"/><g fill="#B22234"><rect y="0" width="30" height="1.54"/><rect y="3.08" width="30" height="1.54"/><rect y="6.15" width="30" height="1.54"/><rect y="9.23" width="30" height="1.54"/><rect y="12.31" width="30" height="1.54"/><rect y="15.38" width="30" height="1.54"/><rect y="18.46" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/></svg>Team America</h3>
-<dl><dt>Status</dt><dd><span class="status">Forming</span></dd><dt>Level</dt><dd>Nation</dd><dt>Started</dt><dd>Nov 15, 2026</dd><dt>Sponsor</dt><dd>James Hodges (founder)</dd><dt>Members</dt><dd>1</dd><dt>Admins</dt><dd>1 of 2 (second admin needed)</dd></dl>
+<dl><dt>Status</dt><dd><span class="status">Forming</span></dd><dt>Gate</dt><dd>Gate 1 of 5 · Values</dd><dt>Level</dt><dd>Nation</dd><dt>Started</dt><dd>Nov 15, 2026</dd><dt>Sponsor</dt><dd>James Hodges (founder)</dd><dt>Members</dt><dd>1</dd><dt>Admins</dt><dd>1 of 2 (second admin needed)</dd></dl>
 <p class="links"><a href="https://github.com/RuntimeRepublic/Team-America">Team repository</a> · <a href="../dashboard/?team=Team%20America">Dashboard</a></p>
 </div>
 </div>
 
 <h2>Register a team</h2>
-<ol class="steps">
-<li><strong>Build your own master plan first</strong> and adopt the six values. See <a href="../#get-ready">Get ready now</a>.</li>
-<li><strong>Say what the team is for.</strong> The purpose is checked against the control documents, and this registry is checked for a team that already does the same thing.</li>
-<li><strong>Name a sponsor</strong> (a registered team or the founder) and <strong>two admins</strong>, so the team never gets locked out.</li>
-<li><strong>Stand up a public team repository</strong> with <code>MEMBERS.md</code>, <code>data/group-counts.csv</code> and a <code>packets/</code> folder. Copy <a href="https://github.com/RuntimeRepublic/Team-America">Team America</a> as the example.</li>
-<li><strong>Open a pull request</strong> that adds one line to <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/blob/main/Registry/teams.csv">Registry/teams.csv</a>. Once it is merged, the team shows on this page, the <a href="../teams/">Teams</a> page and the <a href="../dashboard/">dashboard</a>.</li>
-</ol>
-<p class="note">Status words (proposed): <strong>Forming</strong> means fewer than two admins or no closed week yet. <strong>Active</strong> means the team posts weekly counts. <strong>Paused</strong> and <strong>Closed</strong> mean what they say. Rules: <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls">Runtime-Republic-Controls</a>, CONTROL 07.</p>
+<p>New team or existing group: follow <strong><a href="../onboard/">Bring your group</a></strong>. Two doors, six gates. A team is added here at Gate 3 and becomes Active at Gate 5.</p>
+<p class="note">Status words: <strong>Forming</strong> (working through the gates), <strong>Active</strong> (passed Gate 5, posted at the latest weekly close), <strong>Paused</strong> (missed the latest weekly close or short an admin; back to Active the next week it posts), <strong>Closed</strong>. Rules: <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls">Runtime-Republic-Controls</a>, CONTROL 07 §3.9 (proposed).</p>
 
 <script>
 (function(){
@@ -51,6 +45,7 @@ footer{margin-top:3rem;color:#555;font-size:.9rem}
  function objs(t){var r=parse(t),h=r.shift().map(function(s){return s.trim()});return r.map(function(x){var o={};h.forEach(function(k,i){o[k]=(x[i]||'').trim()});return o})}
  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
  function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):''}
+ var GN={G0:'Gate 0 · Request',G1:'Gate 1 of 5 · Values',G2:'Gate 2 of 5 · Purpose and sponsor',G3:'Gate 3 of 5 · Stand up',G4:'Gate 4 of 5 · Loop proven',G5:'Gate 5 of 5 · First closed week',done:'All gates passed'};
  function dt(s){var d=new Date(s+'T12:00:00');return isNaN(d)?s:d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
  var flag=document.querySelector('#list svg').outerHTML;
  fetch(REG,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
@@ -59,7 +54,7 @@ footer{margin-top:3rem;color:#555;font-size:.9rem}
   teams.forEach(function(tm){
    var g=(tm.repo||'').match(/github\.com\/([^\/]+)\/([^\/]+)/);
    var d=document.createElement('div');d.className='team';
-   d.innerHTML='<h3>'+flag+esc(tm.team)+'</h3><dl><dt>Status</dt><dd><span class="status">'+esc(cap(tm.status))+'</span></dd><dt>Level</dt><dd>'+esc(cap((tm.level||'').replace(/^\d+-/,'')))+'</dd><dt>Started</dt><dd>'+esc(dt(tm.started_on))+'</dd><dt>Sponsor</dt><dd>'+esc(tm.sponsor)+(tm.sponsor_team&&tm.sponsor_team!='root'?' ('+esc(tm.sponsor_team)+')':'')+'</dd><dt>Members</dt><dd class="mem">…</dd><dt>Admins</dt><dd class="adm">…</dd></dl><p class="links">'+(g?'<a href="'+esc(tm.repo)+'">Team repository</a> · ':'')+'<a href="../dashboard/?team='+encodeURIComponent(tm.team)+'">Dashboard</a></p>';
+   d.innerHTML='<h3>'+flag+esc(tm.team)+'</h3><dl><dt>Status</dt><dd><span class="status">'+esc(cap(tm.status))+'</span></dd>'+(tm.gate?'<dt>Gate</dt><dd><a href="../onboard/">'+esc(GN[tm.gate]||tm.gate)+'</a></dd>':'')+'<dt>Level</dt><dd>'+esc(cap((tm.level||'').replace(/^\d+-/,'')))+'</dd><dt>Started</dt><dd>'+esc(dt(tm.started_on))+'</dd><dt>Sponsor</dt><dd>'+esc(tm.sponsor)+(tm.sponsor_team&&tm.sponsor_team!='root'?' ('+esc(tm.sponsor_team)+')':'')+'</dd><dt>Members</dt><dd class="mem">…</dd><dt>Admins</dt><dd class="adm">…</dd></dl><p class="links">'+(g?'<a href="'+esc(tm.repo)+'">Team repository</a> · ':'')+'<a href="../dashboard/?team='+encodeURIComponent(tm.team)+'">Dashboard</a></p>';
    list.appendChild(d);
    if(!g){d.querySelector('.mem').textContent='—';d.querySelector('.adm').textContent='—';return}
    fetch('https://raw.githubusercontent.com/'+g[1]+'/'+g[2]+'/main/MEMBERS.md',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(m){
