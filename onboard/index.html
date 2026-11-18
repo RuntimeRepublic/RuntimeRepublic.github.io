@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bring Your Group — Runtime Republic</title>
+<meta name="description" content="How a new team or an existing group joins Runtime Republic: two doors, six gates, and no one joins as a bloc.">
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:1.25rem;line-height:1.6;color:#1a1a1a;background:#fff}
+h1{font-size:1.6rem}h2{font-size:1.2rem;margin-top:2.25rem}h3{font-size:1.05rem;margin:0 0 .25rem}
+a{color:#1f5fa8}.note{color:#555;font-size:.9rem}
+code{background:#eef2f7;padding:.1rem .35rem;border-radius:4px}
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.8rem;margin:1rem 0}
+.door{border:1px solid #ccc;border-radius:10px;padding:.8rem 1rem}.door p{margin:.3rem 0}
+.tag{display:inline-block;font-weight:700;background:#14213D;color:#fff;border-radius:6px;padding:0 .5rem;margin-right:.35rem}
+ol.gates{list-style:none;padding:0;margin:1rem 0}
+ol.gates>li{border-left:4px solid #1f5fa8;padding:.3rem 0 .3rem .9rem;margin:0 0 1rem}
+ol.gates .who{color:#555;font-size:.9rem;margin:.2rem 0 0}
+ul.rules li{margin:.4rem 0}
+footer{margin-top:3rem;color:#555;font-size:.9rem}
+</style>
+</head>
+<body>
+<p><a href="../">← Join the challenge</a> · <a href="../teams/">Teams</a> · <a href="../registry/">Team Registry</a> · <a href="../dashboard/">Team dashboard</a></p>
+<h1>Bring your group</h1>
+<p>Starting a team, or bringing a group you already have? Everyone comes in through one of two doors, then passes the same six gates in order. The <a href="../registry/">Team Registry</a> shows which gate each team is on.</p>
+<p class="note">Proposed. The rules are in <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls">Runtime-Republic-Controls</a>, CONTROL 07, section 3.9.</p>
+
+<h2>Pick your door</h2>
+<div class="doors">
+<div class="door"><h3><span class="tag">A</span>New team</h3><p>A few people starting a team from scratch.</p><p><strong>Start:</strong> one of you opens the team request (Gate 0).</p></div>
+<div class="door"><h3><span class="tag">B</span>Existing group</h3><p>A Facebook group, a coalition, a club, or an issue team such as FairTax.</p><p><strong>Start:</strong> your group's contact opens the team request and names your group (Gate 0).</p></div>
+</div>
+
+<h2>If you are an existing group (Door B)</h2>
+<ul class="rules">
+<li><strong>Keep what you have.</strong> Your group keeps its name, its platform and its leaders. Your Runtime Republic team is a separate team with its own public repository.</li>
+<li><strong>Nobody joins as a bloc.</strong> Each person adopts the values and joins on their own. A leader cannot sign up the members.</li>
+<li><strong>No chain of command carries over.</strong> The team's two admins are chosen from members who passed Gate 1.</li>
+<li><strong>Neither speaks for the other.</strong> The team speaks for itself, and your group speaks for itself.</li>
+<li><strong>Settle conflicts first.</strong> If your group's rules conflict with the six values, say so in the request. It is settled before Gate 2.</li>
+</ul>
+<p class="note">Why: liberty is the art of elite capture avoidance. These rules keep any group from capturing its members or Runtime Republic, and Runtime Republic from capturing your group.</p>
+
+<h2>The six gates</h2>
+<ol class="gates">
+<li><h3>Gate 0 · Request</h3>Open an issue titled <code>TEAM REQUEST: &lt;name&gt;</code> in <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/issues">Runtime-Republic-Controls</a>. Say what the team is for, your door (A or B), your level (nation, state, county or city) and who you'd like as sponsor.<p class="who">Checked by: the founder or a sponsor</p></li>
+<li><h3>Gate 1 · Values</h3>At least two founding members each build a private <a href="https://github.com/RuntimeRepublicUniversity/master-plan-template">master plan</a> and sign the six values (RP1 to RP6) in their own repository. See <a href="../#get-ready">Get ready now</a>.<p class="who">Checked by: the sponsor</p></li>
+<li><h3>Gate 2 · Purpose and sponsor</h3>Your purpose is checked against the three frameworks' control documents, and the registry is checked for a team already doing the same thing. Your sponsor accepts. You pick your team name and your two admins.<p class="who">Checked by: the sponsor</p></li>
+<li><h3>Gate 3 · Stand up</h3>Make a public team repository like <a href="https://github.com/RuntimeRepublic/Team-America">Team America</a>, with <code>MEMBERS.md</code>, <code>data/group-counts.csv</code> and a <code>packets/</code> folder. Both admins get access. Add your team to the registry by pull request.<p class="who">Checked by: the founder</p></li>
+<li><h3>Gate 4 · Loop proven</h3>Every founding member passes the onboarding test (<code>ONBOARD:</code> issue, then <code>ack:</code>) and sets up two AI projects: Personal Finance and Team.<p class="who">Checked by: the team lead</p></li>
+<li><h3>Gate 5 · First closed week</h3>At least two members file their weekly packets for the same week, and the team posts its first counts. Your team appears on the <a href="../dashboard/">dashboard</a> and changes from Forming to Active.<p class="who">Checked by: the team lead, reported to the sponsor</p></li>
+</ol>
+
+<h2>Status words</h2>
+<p><strong>Forming:</strong> working through the gates. <strong>Active:</strong> passed Gate 5 and posts weekly counts. <strong>Paused:</strong> no closed week for 8 weeks, or fewer than two admins. <strong>Closed:</strong> the team ended; its repository stays public as a record.</p>
+
+<h2>Ready?</h2>
+<p><strong><a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/issues/new?title=TEAM%20REQUEST%3A%20">Open your team request</a></strong> (needs a free GitHub account). Not sure yet? Read <a href="../teams/">how a team runs the challenge</a> first.</p>
+<footer>Runtime Republic is a goodwill project of Lean Office Pro LLC. Free. Accepts no donations.<br>RuntimeRepublic.com · BlueprintLiberty.com</footer>
+</body>
+</html>
