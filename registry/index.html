@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Registry — Runtime Republic</title>
+<meta name="description" content="Every registered Runtime Republic team: level, sponsor, status, members and admins, read live from the team registry.">
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:1.25rem;line-height:1.6;color:#1a1a1a;background:#fff}
+h1{font-size:1.6rem}h2{font-size:1.2rem;margin-top:2.25rem}
+a{color:#1f5fa8}.note{color:#555;font-size:.9rem}
+code{background:#eef2f7;padding:.1rem .35rem;border-radius:4px}
+.team{border:1px solid #ccc;border-radius:10px;padding:.9rem 1rem;margin:1rem 0}
+.team h3{margin:0 0 .4rem;font-size:1.15rem;display:flex;align-items:center;gap:.5rem}
+.team dl{display:grid;grid-template-columns:8.5rem 1fr;gap:.2rem .75rem;margin:0}
+.team dt{color:#555}.team dd{margin:0}
+.links{margin:.6rem 0 0}
+.status{display:inline-block;font-size:.8rem;font-weight:600;padding:.1rem .55rem;border-radius:999px;border:1px solid #1f5fa8;color:#1f5fa8}
+ol.steps>li{margin:.6rem 0}
+footer{margin-top:3rem;color:#555;font-size:.9rem}
+</style>
+</head>
+<body>
+<p><a href="../">← Join the challenge</a> · <a href="../teams/">Teams</a> · <a href="../dashboard/">Team dashboard</a> · <a href="../codes/">Cheat codes</a></p>
+<h1>Team Registry</h1>
+<p>Every Runtime Republic team is listed here once it is registered. A team that is not on this page is not a Runtime Republic team. Each team speaks only for itself.</p>
+<p class="note" id="asof">Read live from the <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/blob/main/Registry/teams.csv">registry file</a>. Snapshot below: November 18, 2026.</p>
+
+<div id="list">
+<div class="team">
+<h3><svg role="img" aria-label="United States flag" width="30" height="20" viewBox="0 0 30 20" style="border:1px solid #ccc;border-radius:2px"><rect width="30" height="20" fill="#fff"/><g fill="#B22234"><rect y="0" width="30" height="1.54"/><rect y="3.08" width="30" height="1.54"/><rect y="6.15" width="30" height="1.54"/><rect y="9.23" width="30" height="1.54"/><rect y="12.31" width="30" height="1.54"/><rect y="15.38" width="30" height="1.54"/><rect y="18.46" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/></svg>Team America</h3>
+<dl><dt>Status</dt><dd><span class="status">Forming</span></dd><dt>Level</dt><dd>Nation</dd><dt>Started</dt><dd>Nov 15, 2026</dd><dt>Sponsor</dt><dd>James Hodges (founder)</dd><dt>Members</dt><dd>1</dd><dt>Admins</dt><dd>1 of 2 (second admin needed)</dd></dl>
+<p class="links"><a href="https://github.com/RuntimeRepublic/Team-America">Team repository</a> · <a href="../dashboard/?team=Team%20America">Dashboard</a></p>
+</div>
+</div>
+
+<h2>Register a team</h2>
+<ol class="steps">
+<li><strong>Build your own master plan first</strong> and adopt the six values. See <a href="../#get-ready">Get ready now</a>.</li>
+<li><strong>Say what the team is for.</strong> The purpose is checked against the control documents, and this registry is checked for a team that already does the same thing.</li>
+<li><strong>Name a sponsor</strong> (a registered team or the founder) and <strong>two admins</strong>, so the team never gets locked out.</li>
+<li><strong>Stand up a public team repository</strong> with <code>MEMBERS.md</code>, <code>data/group-counts.csv</code> and a <code>packets/</code> folder. Copy <a href="https://github.com/RuntimeRepublic/Team-America">Team America</a> as the example.</li>
+<li><strong>Open a pull request</strong> that adds one line to <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/blob/main/Registry/teams.csv">Registry/teams.csv</a>. Once it is merged, the team shows on this page, the <a href="../teams/">Teams</a> page and the <a href="../dashboard/">dashboard</a>.</li>
+</ol>
+<p class="note">Status words (proposed): <strong>Forming</strong> means fewer than two admins or no closed week yet. <strong>Active</strong> means the team posts weekly counts. <strong>Paused</strong> and <strong>Closed</strong> mean what they say. Rules: <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls">Runtime-Republic-Controls</a>, CONTROL 07.</p>
+
+<script>
+(function(){
+ var REG='https://raw.githubusercontent.com/RuntimeRepublic/Runtime-Republic-Controls/main/Registry/teams.csv';
+ function parse(t){var out=[],row=[],f='',q=false;t=t.replace(/\r/g,'');for(var i=0;i<t.length;i++){var c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);out.push(row);row=[];f=''}else f+=c}if(f||row.length){row.push(f);out.push(row)}return out.filter(function(r){return r.join('').trim()})}
+ function objs(t){var r=parse(t),h=r.shift().map(function(s){return s.trim()});return r.map(function(x){var o={};h.forEach(function(k,i){o[k]=(x[i]||'').trim()});return o})}
+ function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):''}
+ function dt(s){var d=new Date(s+'T12:00:00');return isNaN(d)?s:d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+ var flag=document.querySelector('#list svg').outerHTML;
+ fetch(REG,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+  var teams=objs(t);if(!teams.length)return;
+  var list=document.getElementById('list');list.innerHTML='';
+  teams.forEach(function(tm){
+   var g=(tm.repo||'').match(/github\.com\/([^\/]+)\/([^\/]+)/);
+   var d=document.createElement('div');d.className='team';
+   d.innerHTML='<h3>'+flag+esc(tm.team)+'</h3><dl><dt>Status</dt><dd><span class="status">'+esc(cap(tm.status))+'</span></dd><dt>Level</dt><dd>'+esc(cap((tm.level||'').replace(/^\d+-/,'')))+'</dd><dt>Started</dt><dd>'+esc(dt(tm.started_on))+'</dd><dt>Sponsor</dt><dd>'+esc(tm.sponsor)+(tm.sponsor_team&&tm.sponsor_team!='root'?' ('+esc(tm.sponsor_team)+')':'')+'</dd><dt>Members</dt><dd class="mem">…</dd><dt>Admins</dt><dd class="adm">…</dd></dl><p class="links">'+(g?'<a href="'+esc(tm.repo)+'">Team repository</a> · ':'')+'<a href="../dashboard/?team='+encodeURIComponent(tm.team)+'">Dashboard</a></p>';
+   list.appendChild(d);
+   if(!g){d.querySelector('.mem').textContent='—';d.querySelector('.adm').textContent='—';return}
+   fetch('https://raw.githubusercontent.com/'+g[1]+'/'+g[2]+'/main/MEMBERS.md',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(m){
+    var rows=m.split('\n').filter(function(l){return /^\|/.test(l)&&!/^\|\s*-/.test(l)&&!/^\|\s*Member\s*\|/i.test(l)});
+    var admins=rows.filter(function(l){return /admin/i.test(l)}).length;
+    d.querySelector('.mem').textContent=rows.length;
+    d.querySelector('.adm').textContent=admins+' of 2'+(admins<2?' (second admin needed)':'');
+   }).catch(function(){d.querySelector('.mem').textContent='—';d.querySelector('.adm').textContent='—'});
+  });
+  document.getElementById('asof').innerHTML='Live from the <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/blob/main/Registry/teams.csv">registry file</a>. '+teams.length+' registered team'+(teams.length==1?'':'s')+'.';
+ }).catch(function(){});
+})();
+</script>
+<footer>Runtime Republic is a goodwill project of Lean Office Pro LLC. Free. Accepts no donations.<br>RuntimeRepublic.com · BlueprintLiberty.com</footer>
+</body>
+</html>
