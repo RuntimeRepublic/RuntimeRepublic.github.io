@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teams — Runtime Republic</title>
+<meta name="description" content="Current team status at a glance, and the workflow every Runtime Republic team follows to run the challenge.">
+<style>
+body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:1.25rem;line-height:1.6;color:#1a1a1a;background:#fff}
+h1{font-size:1.6rem}h2{font-size:1.2rem;margin-top:2.25rem}h3{font-size:1.05rem;margin-bottom:.25rem}
+a{color:#1f5fa8}.note{color:#555;font-size:.9rem}
+code{background:#eef2f7;padding:.1rem .35rem;border-radius:4px}
+table{border-collapse:collapse;width:100%;font-size:.95rem}th,td{border:1px solid #ccc;padding:.4rem .5rem;text-align:left;vertical-align:top}th{background:#f4f4f4}
+ol.steps>li{margin:.9rem 0}
+footer{margin-top:3rem;color:#555;font-size:.9rem}
+</style>
+</head>
+<body>
+<p><a href="../">← Join the challenge</a> · <a href="../system/">How the whole system works</a> · <a href="../codes/">Cheat codes</a></p>
+<h1>Teams</h1>
+<p>A team (a Study Circle) runs the challenge together. Each member keeps their own records private; the team shares only counts and wins. Every team speaks only for itself.</p>
+
+<h2>Current teams at a glance</h2>
+<p class="note">Read live from the <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/blob/main/Registry/teams.csv">team registry</a>. A team appears here once it is registered.</p>
+<table id="teams">
+<tr><th>Team</th><th>Level</th><th>Started</th><th>Status</th><th>Members</th></tr>
+<tr><td><a href="https://github.com/RuntimeRepublic/Team-America">Team America</a></td><td>Nation</td><td>Nov 15, 2026</td><td>Forming</td><td>1 (second admin needed)</td></tr>
+</table>
+<p class="note" id="teams-asof">Snapshot: November 18, 2026.</p>
+<script>
+(function(){
+ var raw='https://raw.githubusercontent.com/RuntimeRepublic/Runtime-Republic-Controls/main/Registry/teams.csv';
+ function csv(t){return t.trim().split(/\r?\n/).map(function(l){return l.split(',')})}
+ function cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):''}
+ function lvl(s){return cap((s||'').replace(/^\d+-/,''))}
+ function dt(s){try{var d=new Date(s+'T12:00:00');return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}catch(e){return s}}
+ fetch(raw,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+  var rows=csv(t),h=rows.shift(),ix={};h.forEach(function(k,i){ix[k.trim()]=i});
+  if(!rows.length)return;
+  var tb=document.getElementById('teams');
+  while(tb.rows.length>1)tb.deleteRow(1);
+  rows.forEach(function(r){
+   var tr=tb.insertRow(),repo=r[ix.repo]||'',name=r[ix.team]||'';
+   tr.insertCell().innerHTML=repo?'<a href="'+repo+'">'+name+'</a>':name;
+   tr.insertCell().textContent=lvl(r[ix.level]);
+   tr.insertCell().textContent=dt(r[ix.started_on]);
+   tr.insertCell().textContent=cap(r[ix.status]);
+   var m=tr.insertCell();m.textContent='…';
+   var g=repo.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+   if(!g){m.textContent='—';return}
+   fetch('https://raw.githubusercontent.com/'+g[1]+'/'+g[2]+'/main/data/group-counts.csv',{cache:'no-store'}).then(function(x){if(!x.ok)throw 0;return x.text()}).then(function(c){
+    var cr=csv(c),ch=cr.shift(),last=cr[cr.length-1];
+    if(!last||last.length<2){m.textContent='Counts start at launch';return}
+    var j={};ch.forEach(function(k,i){j[k.trim()]=i});
+    m.textContent=last[j.members]+' (week '+last[j.week]+', '+(last[j.closed_week]||0)+' closed)';
+   }).catch(function(){m.textContent='—'});
+  });
+  document.getElementById('teams-asof').textContent='Live from the registry.';
+ }).catch(function(){});
+})();
+</script>
+
+<h2>How a team runs the challenge</h2>
+<ol class="steps">
+<li><h3>Every member starts with a master plan</h3>Build your own private <a href="https://github.com/RuntimeRepublicUniversity/master-plan-template">master plan</a> and adopt the six values (RP1 to RP6). Founders do the same. See <a href="../#get-ready">Get ready now</a>.</li>
+<li><h3>Ask for a team</h3>Say what the team is for. The purpose is checked against the control documents, the registry is checked for a team that already does the same thing, and a sponsor is named.</li>
+<li><h3>Stand it up</h3>A public team repository holds <code>MEMBERS.md</code>, weekly counts (<code>data/group-counts.csv</code>) and reviewed study files. Every team keeps <strong>two admins</strong> so it never gets locked out. The team is added to the registry by pull request, and then it shows in the table above.</li>
+<li><h3>Onboard each member</h3>The team lead opens an <code>ONBOARD: &lt;name&gt;</code> issue. The new member's AI reads the team README and the member posts <code>onboarded</code>. Every current member types <code>ack: &lt;name&gt;</code> to their AI and posts the line within 72 hours. That proves everyone's AI → GitHub → AI loop works.</li>
+<li><h3>Run the week</h3>
+<table>
+<tr><th>When</th><th>Who</th><th>What</th></tr>
+<tr><td>During the week</td><td>Each member</td><td>Save receipts and bills to your private repo (<code>pfmlr</code>, <code>Bill:</code>, <code>Paystub:</code>).</td></tr>
+<tr><td>Saturday</td><td>Each member</td><td><code>Close week:</code> review and close your week.</td></tr>
+<tr><td>Saturday</td><td>Each member</td><td>If you choose, push broad category counts to the team by hand. Never names, accounts or single bills.</td></tr>
+<tr><td>Sunday</td><td>Team</td><td>Update the team counts and post the week's wins. <code>New week:</code> starts the next week.</td></tr>
+</table></li>
+<li><h3>Climb the levels</h3>Members move up the personal finance levels and the Close Encounters levels (CE1 to CE5). The team publishes only how many members are at each level.</li>
+<li><h3>Review and improve</h3>Once a month the team asks: what worked, what didn't, what we change next (Plan, Do, Check, Act). Changes are made by pull request, so every change is recorded.</li>
+</ol>
+
+<h2>The ground rules</h2>
+<ul>
+<li>Same rules for every member, founders included.</li>
+<li>Decisions are made in public issues, not private messages.</li>
+<li>Anyone may leave and take their own work with them.</li>
+<li>No one's personal finances are ever shared. Only counts and wins.</li>
+</ul>
+<p class="note">Draft. Team rules are in <a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls">Runtime-Republic-Controls</a> (CONTROL 07, Member Onboarding).</p>
+<footer>Runtime Republic is a goodwill project of Lean Office Pro LLC. Free. Accepts no donations.<br>RuntimeRepublic.com · BlueprintLiberty.com</footer>
+</body>
+</html>
