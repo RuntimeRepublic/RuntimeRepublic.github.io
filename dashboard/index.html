@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lean Civics Team Dashboard — Runtime Republic</title>
-<meta name="description" content="Mockup of the public Lean Civics team dashboard: Close Encounters levels CE1 to CE5 and budget priority, by call sign.">
+<meta name="description" content="The public Lean Civics team dashboard: Close Encounters levels CE1 to CE5 and budget priority, by call sign, read live from each team's weekly packets.">
 <style>
 body{margin:0;background:#F6F5F1;color:#14213D;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
 .wrap{max-width:1200px;margin:0 auto;padding:24px 16px 48px}
@@ -44,6 +44,8 @@ h1{margin:0;font-size:36px;line-height:1.1}
 .rk{display:grid;grid-template-columns:22px 82px minmax(0,1fr) 64px;align-items:center;gap:8px;margin:4px 0}.rk .chip{justify-content:center}
 .bar{display:block;height:8px;border-radius:4px;background:#E3E7EE}.bar span{display:block;height:8px;border-radius:4px;background:#1F4E8C}.bar span.fam{background:#E07A1F}
 .famline{margin:8px 0 0;font-weight:600;color:#7A3B00}
+.empty{padding:18px 16px;font-size:15px}.empty p{margin:4px 0}
+details.samp{margin:28px 0 0}details.samp summary{cursor:pointer;font-weight:600;font-size:17px;margin-bottom:10px}
 .muted{color:#4A5568;font-size:13px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
 .card{background:#fff;border:1px solid #D9DCE1;border-radius:12px;padding:14px 16px}.card p{margin:4px 0 0;font-size:13.5px;color:#3A4A60}
@@ -52,11 +54,11 @@ footer{font-size:13px;color:#4A5568}
 </head>
 <body>
 <div class="wrap">
-<p><a href="../">← Join the challenge</a> · <a href="../teams/">Teams</a> · <a href="../system/">How the whole system works</a></p>
+<p><a href="../">← Join the challenge</a> · <a href="../teams/">Teams</a> · <a href="../registry/">Team Registry</a> · <a href="../system/">How the whole system works</a></p>
 <p class="eyebrow">Lean Civics Dashboard · Runtime Republic</p>
-<div class="title"><svg role="img" aria-label="United States flag" width="54" height="36" viewBox="0 0 30 20" style="flex: none; border: 1px solid #C9CED6; border-radius: 3px"><rect width="54" height="36" fill="#FFFFFF"/><rect y="0" width="30" height="1.54" fill="#B22234"/><rect y="3.08" width="30" height="1.54" fill="#B22234"/><rect y="6.15" width="30" height="1.54" fill="#B22234"/><rect y="9.23" width="30" height="1.54" fill="#B22234"/><rect y="12.31" width="30" height="1.54" fill="#B22234"/><rect y="15.38" width="30" height="1.54" fill="#B22234"/><rect y="18.46" width="30" height="1.54" fill="#B22234"/><rect width="12" height="10.77" fill="#3C3B6E"/></svg><h1>Team [TEAM NAME]</h1></div>
-<p class="sub">Week [##] · closed [DATE] · Who gets paid first in our houses? Family can only be first when taxes fall on events, not on existence.</p>
-<span class="pill sample">Mockup · sample data</span><span class="pill pub">Public view: call signs only</span>
+<div class="title"><svg role="img" aria-label="United States flag" width="54" height="36" viewBox="0 0 30 20" style="flex: none; border: 1px solid #C9CED6; border-radius: 3px"><rect width="54" height="36" fill="#FFFFFF"/><rect y="0" width="30" height="1.54" fill="#B22234"/><rect y="3.08" width="30" height="1.54" fill="#B22234"/><rect y="6.15" width="30" height="1.54" fill="#B22234"/><rect y="9.23" width="30" height="1.54" fill="#B22234"/><rect y="12.31" width="30" height="1.54" fill="#B22234"/><rect y="15.38" width="30" height="1.54" fill="#B22234"/><rect y="18.46" width="30" height="1.54" fill="#B22234"/><rect width="12" height="10.77" fill="#3C3B6E"/></svg><h1 id="team-name">Team America</h1></div>
+<p class="sub"><span id="team-week">Live from the team's weekly packets</span> · Who gets paid first in our houses? Family can only be first when taxes fall on events, not on existence.</p>
+<span class="pill pub" id="live-pill">Live · read from GitHub</span><span class="pill pub">Public view: call signs only</span>
 <blockquote class="motto"><p>Politics is the art of associations.</p><p>Liberty is the art of elite capture avoidance.</p><p>Drift is the first enemy of Liberty.</p></blockquote>
 <div class="legend">
 <span><span class="m e r" aria-hidden="true">✓3</span>Earned, with its impact rating 1 to 5 (checked by a reviewer)</span>
@@ -66,15 +68,21 @@ footer{font-size:13px;color:#4A5568}
 <span><img src="../images/flags/kansas.svg" alt="" width="30" height="20" class="flag">The US flag leads the team name. Each member may add up to two flags of their choice (state, county or city). The team decides left or right of the call sign. Flag not listed? <a href="https://github.com/RuntimeRepublic/RuntimeRepublic.github.io/blob/main/images/flags/README.md">Add it for everyone</a>.</span>
 </div>
 <p class="swipe"><strong>On a phone?</strong> Turn it sideways (landscape) to see more of the dashboard, then swipe left for every level and the budget priority →</p>
+<div class="scrollwrap"><div class="box" role="table" aria-label="Team dashboard, live"><div class="grid" id="live-grid">
+<div class="empty" id="live-empty"><p><b>Loading the team's packets…</b></p><p class="muted">If this does not change, see the <a href="https://github.com/RuntimeRepublic/Team-America/tree/main/packets">team's packets on GitHub</a>.</p></div>
+</div></div></div>
+<details class="samp"><summary>See a sample: what a full team of five looks like</summary>
+<p class="muted">Sample call signs and numbers, to show how the dashboard reads once a team is running.</p>
 <div class="scrollwrap"><div class="box" role="table" aria-label="Team dashboard"><div class="grid">
 <div class="hd" role="row"><div class="th" style="padding:14px 16px"><b style="font-size:14px">Call sign</b></div><div class="th c"><b>CE1</b><small>Sighting</small></div><div class="th c"><b>CE2</b><small>Physical Evidence</small></div><div class="th c"><b>CE3</b><small>Contact</small></div><div class="th c"><b>CE4</b><small>Communication</small></div><div class="th c"><b>CE5</b><small>First Contact Initiated</small></div><div class="th c"><b style="font-size:13px">Governments</b><small>counted</small></div><div class="th pr"><b style="font-size:15px">Budget priority</b><small>Who gets paid first: 1 → 4</small></div></div>
 <div class="tot" role="row"><div class="rh" role="rowheader"><span><b class="cs" style="font-size:17px">Team totals</b><small>5 members · 4 ranked</small></span></div><div class="td c"><b class="big">4</b><small>of 5 earned</small><small class="imp">impact 3.0</small></div><div class="td c"><b class="big">2</b><small>of 5 earned</small><small class="imp">impact 2.0</small></div><div class="td c"><b class="big">1</b><small>of 5 earned</small><small class="imp">impact 3.0</small></div><div class="td c"><b class="big">0</b><small>of 5 earned</small><small class="imp">impact —</small></div><div class="td c"><b class="big">0</b><small>of 5 earned</small><small class="imp">impact —</small></div><div class="td c"><b class="big">6.8</b><small>average</small></div><div class="td pr"><small style="font-weight:600">Levels of government, by average rank</small><div class="rk"><b>1</b><span class="chip">Federal</span><span class="bar"><span style="width:90%" class=""></span></span><small>avg 1.3</small></div><div class="rk"><b>2</b><span class="chip">Local</span><span class="bar"><span style="width:57%" class=""></span></span><small>avg 2.3</small></div><div class="rk"><b>3</b><span class="chip">State</span><span class="bar"><span style="width:50%" class=""></span></span><small>avg 2.5</small></div><div class="rk"><b>4</b><span class="chip fam">Family</span><span class="bar"><span style="width:0%" class="fam"></span></span><small>avg 4.0</small></div><p class="famline">Family first: 0 of 4. Existence taxes (income, payroll, property) are paid before the family sees its money.</p></div></div>
-<div class="row" role="row"><div class="rh" role="rowheader"><span class="flags"><img src="../images/flags/kansas.svg" alt="Kansas flag" width="30" height="20" class="flag"><img src="../images/flags/wichita.png" alt="Wichita flag" width="30" height="20" class="flag"></span><span><b class="cs">Longbow</b><small>Founder · sample levels</small></span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 4">✓4</span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 2">✓2</span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 3">✓3</span></div><div class="td c"><span class="m w" role="img" aria-label="Working on it">…</span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><b>9</b></div><div class="td pr"><ol class="order"><li><span class="chip"><b>1</b> Federal</span></li><li><span class="chip"><b>2</b> State</span></li><li><span class="chip"><b>3</b> Local</span></li><li><span class="chip fam"><b>4</b> Family</span></li></ol></div></div>
+<div class="row" role="row"><div class="rh" role="rowheader"><span class="flags"><img src="../images/flags/kansas.svg" alt="Kansas flag" width="30" height="20" class="flag"><img src="../images/flags/wichita.png" alt="Wichita flag" width="30" height="20" class="flag"></span><span><b class="cs">Longbow</b><small>Sample levels</small></span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 4">✓4</span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 2">✓2</span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 3">✓3</span></div><div class="td c"><span class="m w" role="img" aria-label="Working on it">…</span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><b>9</b></div><div class="td pr"><ol class="order"><li><span class="chip"><b>1</b> Federal</span></li><li><span class="chip"><b>2</b> State</span></li><li><span class="chip"><b>3</b> Local</span></li><li><span class="chip fam"><b>4</b> Family</span></li></ol></div></div>
 <div class="row" role="row"><div class="rh" role="rowheader"><span class="flags"><img src="../images/flags/kansas.svg" alt="Kansas flag" width="30" height="20" class="flag"></span><span><b class="cs">Prairie</b><small>Sample</small></span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 3">✓3</span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 2">✓2</span></div><div class="td c"><span class="m w" role="img" aria-label="Working on it">…</span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><b>7</b></div><div class="td pr"><ol class="order"><li><span class="chip"><b>1</b> Federal</span></li><li><span class="chip"><b>2</b> Local</span></li><li><span class="chip"><b>3</b> State</span></li><li><span class="chip fam"><b>4</b> Family</span></li></ol></div></div>
 <div class="row" role="row"><div class="rh" role="rowheader"><span class="flags"><img src="../images/flags/wichita.png" alt="Wichita flag" width="30" height="20" class="flag"></span><span><b class="cs">Ironside</b><small>Sample</small></span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 3">✓3</span></div><div class="td c"><span class="m w" role="img" aria-label="Working on it">…</span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><b>6</b></div><div class="td pr"><ol class="order"><li><span class="chip"><b>1</b> Local</span></li><li><span class="chip"><b>2</b> Federal</span></li><li><span class="chip"><b>3</b> State</span></li><li><span class="chip fam"><b>4</b> Family</span></li></ol></div></div>
 <div class="row" role="row"><div class="rh" role="rowheader"><span class="flags"></span><span><b class="cs">Harbor</b><small>Sample · no added flags</small></span></div><div class="td c"><span class="m e r" role="img" aria-label="Earned, impact rating 2">✓2</span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><b>5</b></div><div class="td pr"><ol class="order"><li><span class="chip"><b>1</b> Federal</span></li><li><span class="chip"><b>2</b> State</span></li><li><span class="chip"><b>3</b> Local</span></li><li><span class="chip fam"><b>4</b> Family</span></li></ol></div></div>
 <div class="row" role="row"><div class="rh" role="rowheader"><span class="flags"><img src="../images/flags/kansas.svg" alt="Kansas flag" width="30" height="20" class="flag"><img src="../images/flags/wichita.png" alt="Wichita flag" width="30" height="20" class="flag"></span><span><b class="cs">Sundog</b><small>Sample · new member</small></span></div><div class="td c"><span class="m w" role="img" aria-label="Working on it">…</span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><span class="m n" role="img" aria-label="Not yet"></span></div><div class="td c"><b>—</b></div><div class="td pr"><span class="muted">Not ranked yet (works toward CE1)</span></div></div>
 </div></div></div>
+</details>
 <section class="explain" aria-labelledby="how-read">
 <h2 id="how-read" style="font-size:20px;margin:28px 0 6px">How to read the levels and ratings</h2>
 <p>Every member's progress has <strong>two numbers</strong>: a <strong>level</strong> and an <strong>impact rating</strong>.</p>
@@ -91,7 +99,87 @@ footer{font-size:13px;color:#4A5568}
 <h2 style="font-size:20px;margin:24px 0 6px">Impact ratings (version 1)</h2>
 <div class="box"><table class="rt"><thead><tr><th scope="col">Level</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th></tr></thead><tbody><tr><th scope="row">CE1 Sighting</th><td>You know government takes money but haven't looked</td><td>Counted the governments on one document</td><td>Counted them on all three (pay stub, bill, tax notice)</td><td>Ranked your real budget order: who gets paid first</td><td>Helped another household do the same</td></tr><tr><th scope="row">CE2 Physical Evidence</th><td>One week closed</td><td>One full month closed, with receipts</td><td>Three months closed</td><td>Every dollar traced through all four budgets for three months</td><td>A full year closed and reviewed</td></tr><tr><th scope="row">CE3 Contact</th><td>Federal and state identified</td><td>Plus county and city</td><td>Plus special districts (school, fire) and taxes hidden on bills</td><td>Every government, with each dollar traced to its budget line</td><td>Published for your team and checked against the Gov data repos</td></tr><tr><th scope="row">CE4 Communication</th><td>One message to one official, logged</td><td>A reply received and logged</td><td>Met in person or at office hours</td><td>A repeated Plan-Do-Check-Act cycle with an official over a session, backed by your team</td><td>The official commits to act or sponsors a bill</td></tr><tr><th scope="row">CE5 First Contact Initiated</th><td>Citizens and elected officials create a bill and work together openly on GitHub</td><td>The bill is introduced, with its public GitHub record</td><td>It gets a hearing or passes one chamber</td><td>It is enacted, with a built-in review clause</td><td>A complete system: the Constitution, House and Senate Rules, and laws all align with all 3 frameworks, where they apply</td></tr></tbody></table></div>
 <div class="cards"><div class="card"><b>CE1 · Sighting</b><p>You know something is taking your money, but you don’t track it yet.</p></div><div class="card"><b>CE2 · Physical Evidence</b><p>You ran a real budget for a full month and closed it. You have receipts.</p></div><div class="card"><b>CE3 · Contact</b><p>You identified every government that takes your money, including taxes hidden on bills.</p></div><div class="card"><b>CE4 · Communication</b><p>You contacted the officials who actually set your taxes, and kept a record.</p></div><div class="card"><b>CE5 · First Contact Initiated</b><p>Your records meet the standards of the Runtime Republic frameworks. You set the terms.</p></div></div>
-<footer><p>Public counts only. No names, accounts, employers or dollar amounts. Each member pushes their row by hand at Saturday close.</p><p>Source: each team's <code>data/group-counts.csv</code>. Levels are earned with evidence and checked by a reviewer. This page is a mockup: the call signs and numbers are samples, except that Longbow is the founder's call sign.</p></footer>
+<footer><p>Public counts only. No names, accounts, employers or dollar amounts. Each member pushes their row by hand at Saturday close.</p><p>Source: each member's weekly packet (<a href="https://github.com/RuntimeRepublic/Runtime-Republic-Controls/blob/main/Formats/TEAM-PACKET.md">format</a>), merged into the team repository by pull request. Levels are earned with evidence and checked by a reviewer. The live table reads the newest week in the team's <code>packets/</code> folder on GitHub. The sample below it is made up.</p></footer>
 </div>
+<script>
+(function(){
+ var REG='https://raw.githubusercontent.com/RuntimeRepublic/Runtime-Republic-Controls/main/Registry/teams.csv';
+ var FLAGS='https://raw.githubusercontent.com/RuntimeRepublic/RuntimeRepublic.github.io/main/images/flags/FLAG-LOG.csv';
+ var LV=['Federal','State','Local','Family'];
+ function parse(t){var out=[],row=[],f='',q=false;t=t.replace(/\r/g,'');for(var i=0;i<t.length;i++){var c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==','){row.push(f);f=''}else if(c=='\n'){row.push(f);out.push(row);row=[];f=''}else f+=c}if(f||row.length){row.push(f);out.push(row)}return out.filter(function(r){return r.join('').trim()})}
+ function objs(t){var r=parse(t),h=r.shift().map(function(s){return s.trim()});return r.map(function(x){var o={};h.forEach(function(k,i){o[k]=(x[i]||'').trim()});return o})}
+ function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+ function get(u,json){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw r.status;return json?r.json():r.text()})}
+ function isoWeek(d){var t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));var day=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-day);var y=t.getUTCFullYear();var w=Math.ceil(((t-Date.UTC(y,0,1))/864e5+1)/7);return y+'-W'+(w<10?'0':'')+w}
+ function nextSat(){var d=new Date();d.setDate(d.getDate()+((6-d.getDay()+7)%7));return d}
+ function nice(d){return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}
+ var grid=document.getElementById('live-grid'),hd=document.querySelector('details.samp .hd');
+ function msg(h){grid.innerHTML='<div class="empty">'+h+'</div>'}
+ var want=(new URLSearchParams(location.search).get('team')||'').toLowerCase();
+ Promise.all([get(REG),get(FLAGS).catch(function(){return 'id\n'})]).then(function(a){
+  var teams=objs(a[0]),flags={};objs(a[1]).forEach(function(f){if(f.id&&/\.(svg|png|jpg|webp)$/i.test(f.file||''))flags[f.id]=f});
+  var tm=teams.filter(function(t){return t.team.toLowerCase()==want})[0]||teams[0];
+  if(!tm){msg('<p><b>No teams are registered yet.</b></p><p>See the <a href="../registry/">Team Registry</a>.</p>');return}
+  document.getElementById('team-name').textContent=tm.team;document.title=tm.team+' — Lean Civics Dashboard';
+  var g=(tm.repo||'').match(/github\.com\/([^\/]+)\/([^\/?#]+)/);
+  if(!g){msg('<p><b>This team has no repository listed yet.</b></p>');return}
+  var api='https://api.github.com/repos/'+g[1]+'/'+g[2]+'/contents/packets';
+  return get(api,true).then(function(items){
+   var weeks=items.filter(function(i){return i.type=='dir'&&/^\d{4}-W\d{2}$/.test(i.name)}).map(function(i){return i.name}).sort().reverse();
+   if(!weeks.length){
+    var s=nextSat();
+    document.getElementById('team-week').textContent='No weeks closed yet';
+    msg('<p><b>'+esc(tm.team)+' is live. No packets yet.</b></p><p>The first packets are due at Saturday close, '+esc(nice(s))+' (week '+isoWeek(s)+'). Each member\'s row appears here once their packet is merged.</p><p class="muted">How to file one: <a href="'+esc(tm.repo)+'/tree/main/packets">'+esc(tm.team)+' packets folder</a>.</p>');
+    return;
+   }
+   var wk=weeks[0];
+   return get(api+'/'+wk,true).then(function(files){
+    files=files.filter(function(f){return /\.csv$/i.test(f.name)});
+    return Promise.all(files.map(function(f){return get(f.download_url).then(function(t){return objs(t)[0]}).catch(function(){return null})}));
+   }).then(function(rows){
+    rows=rows.filter(function(r){return r&&r.call_sign}).sort(function(x,y){return x.call_sign.localeCompare(y.call_sign)});
+    document.getElementById('team-week').textContent='Week '+wk+' · '+rows.length+' packet'+(rows.length==1?'':'s');
+    render(rows,flags);
+   });
+  });
+ }).catch(function(){msg('<p><b>Could not load the live data right now.</b></p><p class="muted">Try again in a minute. GitHub limits how often a page can ask.</p>')});
+
+ function box(st,imp){
+  if(st=='E')return '<span class="m e r" role="img" aria-label="Earned'+(imp?', impact rating '+esc(imp):'')+'">✓'+esc(imp||'')+'</span>';
+  if(st=='W')return '<span class="m w" role="img" aria-label="Working on it">…</span>';
+  return '<span class="m n" role="img" aria-label="Not yet"></span>';
+ }
+ function chips(r){var o=[1,2,3,4].map(function(i){return r['budget_'+i]}).filter(Boolean);if(o.length<4)return '<span class="muted">Not ranked yet</span>';return '<ol class="order">'+o.map(function(v,i){return '<li><span class="chip'+(v=='Family'?' fam':'')+'"><b>'+(i+1)+'</b> '+esc(v)+'</span></li>'}).join('')+'</ol>'}
+ function render(rows,flags){
+  var n=rows.length,h='';
+  h+=(hd?hd.outerHTML:'');
+  var tot='<div class="tot" role="row"><div class="rh" role="rowheader"><span><b class="cs" style="font-size:17px">Team totals</b><small>'+n+' member'+(n==1?'':'s')+' reporting · ';
+  var ranked=rows.filter(function(r){return LV.every(function(_,i){return r['budget_'+(i+1)]})});
+  tot+=ranked.length+' ranked</small></span></div>';
+  for(var c=1;c<=5;c++){
+   var e=rows.filter(function(r){return r['ce'+c+'_status']=='E'}),ims=e.map(function(r){return +r['ce'+c+'_impact']}).filter(function(x){return x>=1&&x<=5});
+   tot+='<div class="td c"><b class="big">'+e.length+'</b><small>of '+n+' earned</small><small class="imp">impact '+(ims.length?(ims.reduce(function(a,b){return a+b},0)/ims.length).toFixed(1):'—')+'</small></div>';
+  }
+  var gv=rows.map(function(r){return parseFloat(r.governments_counted)}).filter(function(x){return !isNaN(x)});
+  tot+='<div class="td c"><b class="big">'+(gv.length?(gv.reduce(function(a,b){return a+b},0)/gv.length).toFixed(1):'—')+'</b><small>average</small></div>';
+  tot+='<div class="td pr">';
+  if(ranked.length){
+   var av=LV.map(function(l){var s=0;ranked.forEach(function(r){for(var i=1;i<=4;i++)if(r['budget_'+i]==l)s+=i});return {l:l,a:s/ranked.length}}).sort(function(x,y){return x.a-y.a});
+   tot+='<small style="font-weight:600">Levels of government, by average rank</small>';
+   av.forEach(function(v,i){var f=v.l=='Family';tot+='<div class="rk"><b>'+(i+1)+'</b><span class="chip'+(f?' fam':'')+'">'+v.l+'</span><span class="bar"><span style="width:'+Math.round((4-v.a)/3*100)+'%" class="'+(f?'fam':'')+'"></span></span><small>avg '+v.a.toFixed(1)+'</small></div>'});
+   var ff=ranked.filter(function(r){return r.budget_1=='Family'}).length;
+   tot+='<p class="famline">Family first: '+ff+' of '+ranked.length+'. Existence taxes (income, payroll, property) are paid before the family sees its money.</p>';
+  } else tot+='<span class="muted">No one has ranked their budget order yet.</span>';
+  h+=tot+'</div></div>';
+  rows.forEach(function(r){
+   var fl=(r.flags||'').split(';').map(function(x){return x.trim()}).filter(function(x){return flags[x]}).slice(0,2);
+   h+='<div class="row" role="row"><div class="rh" role="rowheader"><span class="flags">'+fl.map(function(id){return '<img src="../images/flags/'+esc(flags[id].file)+'" alt="'+esc(flags[id].name)+' flag" width="30" height="20" class="flag">'}).join('')+'</span><span><b class="cs">'+esc(r.call_sign)+'</b><small>'+(r.closed_week=='yes'?'Closed the week':'Week not closed')+(r.ce_reviewed_by?' · checked by '+esc(r.ce_reviewed_by):'')+'</small></span></div>';
+   for(var c=1;c<=5;c++)h+='<div class="td c">'+box(r['ce'+c+'_status'],r['ce'+c+'_impact'])+'</div>';
+   h+='<div class="td c"><b>'+esc(r.governments_counted||'—')+'</b></div><div class="td pr">'+chips(r)+'</div></div>';
+  });
+  grid.innerHTML=h;
+ }
+})();
+</script>
 </body>
 </html>
