@@ -26,4 +26,4 @@ here as its first step. Next free number: RRW-CWC-024.
 | RRW-CWC-020 | Team dashboard: Family last in every sample house (existence taxes paid first) | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-021 | Team dashboard: CE impact ratings 1–5 (version 1) | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-022 | Dashboard on phones: swipe hint, right-edge fade, call sign column stays pinned | Claude | Civics Dashboard 01 | Merged |
-| RRW-CWC-023 | Dashboard on phones: landscape tip | Claude | Civics Dashboard 01 | In review |
+| RRW-CWC-023 | Dashboard on phones: landscape tip; unpin the call sign column | Claude | Civics Dashboard 01 | In review |
