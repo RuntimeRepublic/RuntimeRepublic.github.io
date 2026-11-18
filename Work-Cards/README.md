@@ -1,6 +1,6 @@
 # Work cards
 Register for RuntimeRepublic/RuntimeRepublic.github.io. Every card adds its own line
-here as its first step. Next free number: RRW-CWC-024.
+here as its first step. Next free number: RRW-CWC-023.
 
 | ID | Title | Manager | Agent (named by James) | Status |
 |---|---|---|---|---|
@@ -27,3 +27,5 @@ here as its first step. Next free number: RRW-CWC-024.
 | RRW-CWC-021 | Team dashboard: CE impact ratings 1–5 (version 1) | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-022 | Dashboard on phones: swipe hint, right-edge fade, call sign column stays pinned | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-023 | Dashboard on phones: landscape tip; unpin the call sign column | Claude | Civics Dashboard 01 | In review |
+| RRW-CWC-024 | Cheat codes page: add `team:`; Team project note | Claude | Civics Dashboard 01 | In review |
+| RRW-CWC-025 | Shared flag library: FLAG-LOG.csv and how members add a missing flag | Claude | Civics Dashboard 01 | In review |
