@@ -1,6 +1,6 @@
 # Work cards
 Register for RuntimeRepublic/RuntimeRepublic.github.io. Every card adds its own line
-here as its first step. Next free number: RRW-CWC-020.
+here as its first step. Next free number: RRW-CWC-021.
 
 | ID | Title | Manager | Agent (named by James) | Status |
 |---|---|---|---|---|
@@ -22,4 +22,5 @@ here as its first step. Next free number: RRW-CWC-020.
 | RRW-CWC-016 | Cheat codes page: add pfmlr, pfmlr1, +, @, ack:, and the ask codes | Claude | Civics Dashboard 01 | In review |
 | RRW-CWC-017 | Teams page: live team status from the registry and the team workflow; links from join and system pages | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-018 | Join page: Teams link in How it works, near the top | Claude | Civics Dashboard 01 | Merged |
-| RRW-CWC-019 | Team dashboard mockup page (CE1–CE5, budget priority, call signs, flags); links from join and teams pages | Claude | Civics Dashboard 01 | In review |
+| RRW-CWC-019 | Team dashboard mockup page (CE1–CE5, budget priority, call signs, flags); links from join and teams pages | Claude | Civics Dashboard 01 | Merged |
+| RRW-CWC-020 | Team dashboard: Family last in every sample house (existence taxes paid first) | Claude | Civics Dashboard 01 | In review |
