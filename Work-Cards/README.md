@@ -1,6 +1,6 @@
 # Work cards
 Register for RuntimeRepublic/RuntimeRepublic.github.io. Every card adds its own line
-here as its first step. Next free number: RRW-CWC-016.
+here as its first step. Next free number: RRW-CWC-017.
 
 | ID | Title | Manager | Agent (named by James) | Status |
 |---|---|---|---|---|
@@ -18,4 +18,5 @@ here as its first step. Next free number: RRW-CWC-016.
 | RRW-CWC-012 | Runtime Republic landing page and system pictures page | Claude | Civics Dashboard 01 | In review |
 | RRW-CWC-013 | Get ready now: master plan steps, framework prompt, phone Power Tip | Claude | Civics Dashboard 01 | In review |
 | RRW-CWC-014 | System page: six values, three frameworks, where each piece lives; landing page link | Claude | Civics Dashboard 01 | Merged |
-| RRW-CWC-015 | System page: plainer framework status labels | Claude | Civics Dashboard 01 | In review |
+| RRW-CWC-015 | System page: plainer framework status labels | Claude | Civics Dashboard 01 | Merged |
+| RRW-CWC-016 | Cheat codes page: add pfmlr, pfmlr1, +, @, ack:, and the ask codes | Claude | Civics Dashboard 01 | In review |
