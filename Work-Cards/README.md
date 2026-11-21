@@ -1,6 +1,6 @@
 # Work cards
 Register for RuntimeRepublic/RuntimeRepublic.github.io. Every card adds its own line
-here as its first step. Next free number: RRW-CWC-028.
+here as its first step. Next free number: RRW-CWC-029.
 
 | ID | Title | Manager | Agent (named by James) | Status |
 |---|---|---|---|---|
@@ -31,3 +31,4 @@ here as its first step. Next free number: RRW-CWC-028.
 | RRW-CWC-025 | Shared flag library: FLAG-LOG.csv and how members add a missing flag | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-026 | Go live with Team America: Team Registry page; dashboard reads live packets | Claude | Civics Dashboard 01 | Merged |
 | RRW-CWC-027 | Bring your group: onboarding page (two doors, six gates); gate shown in the registry | Claude | Civics Dashboard 01 | In review |
+| RRW-CWC-028 | Close-out page (free and paid members); short section 7 on the system page; links from section 4 and onboarding | Claude | none (drafted by Claude directly) | In review |
