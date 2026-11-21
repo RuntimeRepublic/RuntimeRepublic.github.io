@@ -21,6 +21,7 @@ a{color:#1f5fa8}.note{color:#555;font-size:.9rem}
 table{border-collapse:collapse;width:100%;max-width:560px;font-size:.95rem}th,td{border:1px solid #ccc;padding:.4rem .5rem;text-align:left}th{background:#f4f4f4}
 footer{margin-top:3rem;color:#555;font-size:.9rem}
 @media (max-width:640px){.heads{display:none}.row{grid-template-columns:1fr}.legal:before{content:"Legal text";display:block;font-size:.75rem;font-weight:700;color:#555}.plain:before{content:"Plain language";display:block;font-size:.75rem;font-weight:700;color:#555}}
+.tabs{display:flex;gap:.4rem;margin:.5rem 0 0}.tabs button{font:inherit;padding:.4rem .9rem;border:1px solid #bbb;border-bottom:none;border-radius:6px 6px 0 0;background:#f4f4f4;cursor:pointer}.tabs button[aria-selected="true"]{background:#fff;font-weight:700;border-color:#1a1a1a}
 </style>
 </head>
 <body>
@@ -31,7 +32,11 @@ footer{margin-top:3rem;color:#555;font-size:.9rem}
 <p class="draft">DRAFT for attorney review. Not in force. Do not sign yet. It will change before members are asked to sign it.</p>
 
 <h2>Preamble</h2>
-<div class="preamble">
+<div class="tabs" role="tablist" aria-label="Preamble version">
+<button type="button" role="tab" id="tab-original" aria-controls="pre-original" aria-selected="true">Original</button>
+<button type="button" role="tab" id="tab-plain" aria-controls="pre-plain" aria-selected="false">Plain style</button>
+</div>
+<div class="preamble" id="pre-original" role="tabpanel" aria-labelledby="tab-original">
 <p>When in the course of human events has it ever not been necessary for free people to watch over the money they are taxed and to hold their governments to account? A decent respect for one another requires that they declare the duties they accept. We hold these truths to be self-evident: that each person is the steward of their own life, liberty and property, and that each Team governs itself by the consent of its members.</p>
 <p>Runtime Republic is dedicated to uniting peaceful associations of citizens into one class of taxpayer; to event-based spending, with exit points in every relationship between citizens and every level of government; and to total taxpayer supremacy. Governments are stewards, not owners, of our tax dollars. Governments are established by a binding covenant between the people and the current officeholders, cannot be altered without a constitutional change in the organic law, and at every level must act and respond as republics. Each government gets one event to spend our tax dollars, and only on enumerated items, unless the individual taxpayer has given previous express consent. We, the taxpayers, are the owners, both as a body politic and individually, of the taxes we pay, all the way through the process.</p>
 <p>Waste, fraud, abuse and failure are not enumerated powers of any government at any level for any reason whatsoever. It is the duty of government not only to protect life, liberty, and property, but also to build systems that limit the damage from black swan events. We do not ask officeholders to build systems that never fail, any more than engineers can design airplanes that never crash. We do expect them to design systems that limit failure, the way aerospace engineers work tirelessly to make sure a failure shows up during routine maintenance, so the plane is towed peacefully away for repair and is not flagged by NTSB investigators, yellow for aircraft parts and red for human remains. Judged by the current and recent record of every level of government, one black swan event could take down government at every level and drive us into third-world poverty that lasts a thousand years.</p>
@@ -40,7 +45,32 @@ footer{margin-top:3rem;color:#555;font-size:.9rem}
 <p>No pilot flies blind, and in the republic we will build, no free people will govern blind. Drift is the first enemy of liberty, and telemetry is the only guard against it: the instruments that will show, in time to act, when government strays from its written limits. With those instruments, every taxpayer will be able to claw back any tax dollar spent outside enumerated authority and direct it toward the pursuit of happiness and the prosperity of the next generation. Every taxpayer will hold a sinking fund of their own, inheritable and protected from seizure, from which government will borrow first and repay on time. Every level of government will function as a Runtime Republic, with readings so precise that one soldier sent into combat without the gear Congress paid for will bring Congress back into session and the President before the nation. Rules without consequences are suggestions.</p>
 <p>We, the Members of Runtime Republic, in Order to form a more perfect Union, do ordain and establish this Agreement.</p>
 </div>
-<p class="note"><a href="plain/">Read the preamble in plain style</a>: the same positions in short, plain sentences.</p>
+<div class="preamble" id="pre-plain" role="tabpanel" aria-labelledby="tab-plain">
+<p class="note" style="font-style:normal">The same positions in short, plain sentences.</p>
+<p>Has there ever been a time when free people did not need to watch their money and the men who take it? There has not. So we say what we owe each other. We say it plainly.</p>
+<p>A man owns his life and his liberty and what he has made. A woman owns hers. That is the first thing. Each Team governs itself because its people agree to it. That is the second thing.</p>
+<p>Runtime Republic brings peaceful people together as one class of taxpayer. We spend by the event. Every tie between a citizen and a government has a way out. The taxpayer is supreme. Government does not own our money. It keeps it for us. It is bound by a covenant with the people, and the men and women who hold office now are bound by it too. The covenant does not change unless the constitution changes. Every level of government must act as a republic. Each government gets one event to spend our money, and only on what is written down, unless the taxpayer said yes first. The taxes are ours. They are ours together and they are ours alone, from the day we pay them to the day they are spent.</p>
+<p>Waste is not a power. Fraud is not a power. Abuse and failure are not powers. No government holds them, at any level, for any reason. Government must guard life and liberty and property. It must also build so that when the storm comes the damage stays small. We do not ask for a system that never fails. No engineer builds a plane that never crashes. But a good engineer works hard so the failure shows in the hangar, on a quiet morning, during the routine check. The plane is towed away and fixed. It is not lying in a field with the investigators' flags around it, yellow for the parts and red for the dead. Look at what our governments have done, now and in recent years. One bad storm could take them all down. It could leave us poor for a thousand years.</p>
+<p>What we own is ours. The taxes we paid are ours. An account the government keeps with nothing of ours behind it is not lawful. The first duty of government is to give back what it took: the property it pooled and promised and spent. Social Security first. Medicare too. We will not walk away from it. It is our work and our homes and our savings. It is the measure of a life. We will hold it, and our holding it is the receipt that the republic works.</p>
+<p>Money must be honest. It must be tied to gold and grow only when the gold grows. God asks for it: "A false balance is abomination to the LORD: but a just weight is his delight" (Proverbs 11:1, KJV; see also Leviticus 19:35&ndash;36 and Deuteronomy 25:13&ndash;15). No government may tax the children not yet born. Government must learn to live on savings and not on taxes.</p>
+<p>A pilot does not fly blind. In the republic we will build, free people will not govern blind. Drift is the first enemy of liberty, and telemetry is the only guard against it. Telemetry is the gauges. In that republic the gauges will show every citizen, while there is still time, when a government leaves the written course. Any dollar spent outside the written powers will come back to the taxpayer, who will send it where it builds happiness and helps the next generation. Every taxpayer will have a sinking fund of their own. Their children will inherit it. No one will seize it. Government will borrow from it first and pay it back on time. Every government will run as a Runtime Republic, and the gauges will be that good: if one soldier goes to war without the gear Congress paid for, Congress will come back and the President will stand before the nation. A rule with no consequence is only a suggestion.</p>
+<p>So we, the Members of Runtime Republic, in Order to form a more perfect Union, do ordain and establish this Agreement.</p>
+</div>
+<script>
+(function(){
+  var tabs=[document.getElementById('tab-original'),document.getElementById('tab-plain')];
+  var panels=[document.getElementById('pre-original'),document.getElementById('pre-plain')];
+  function show(i){
+    for(var k=0;k<2;k++){
+      tabs[k].setAttribute('aria-selected', k===i?'true':'false');
+      panels[k].hidden = (k!==i);
+    }
+  }
+  tabs[0].addEventListener('click',function(){show(0);history.replaceState(null,'','#original');});
+  tabs[1].addEventListener('click',function(){show(1);history.replaceState(null,'','#plain');});
+  show(location.hash==='#plain'?1:0);
+})();
+</script>
 <p class="note">The preamble states purpose and creates no rights or duties. Read each pair of boxes left to right, top to bottom. If the two columns differ, the left column controls. Bracketed items [like this] are for the attorney to confirm.</p>
 
 <h2>Agreement</h2>
