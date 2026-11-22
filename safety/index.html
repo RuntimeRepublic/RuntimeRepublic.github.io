@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runtime Republic — Safety rules</title>
+<meta name="description" content="How Runtime Republic members keep their money data safe: read-only bank links, what the AI will never do, what never goes public, and what to do if something leaks.">
+<style>
+body{font-family:system-ui,sans-serif;max-width:820px;margin:0 auto;padding:1.25rem;line-height:1.6;color:#1a1a1a;background:#fff}
+h1{font-size:1.6rem;margin-bottom:.25rem}h2{font-size:1.2rem;margin-top:2rem}
+a{color:#1f5fa8}.note{color:#555;font-size:.9rem}
+.lead{font-size:1.1rem;border:2px solid #1a1a1a;padding:.75rem 1rem;margin:1rem 0}
+.box{border:1px solid #bbb;border-radius:6px;padding:.6rem 1rem;margin:.75rem 0;background:#fafafa}
+li{margin:.3rem 0}
+footer{margin-top:3rem;color:#555;font-size:.9rem}
+</style>
+</head>
+<body>
+<p><a href="../">← Runtime Republic home</a> · <a href="../agreement/">Member agreement</a> · <a href="../system/">How the whole system works</a></p>
+<h1>Safety rules</h1>
+<p class="note">Version 1 · November 21, 2026</p>
+
+<p class="lead">The AI can <strong>read</strong> your money data. It can never touch your money or your passwords. Your data stays private unless you choose to share a summary.</p>
+
+<h2>1. Your bank connection</h2>
+<div class="box">
+<p><strong>Paid AI plans:</strong> link your accounts through a <strong>read-only</strong> service, such as Claude's Personal Finance feature, which uses Plaid. You sign in through Plaid, so the AI never sees your bank password, and the link can only read, never move money.</p>
+<p><strong>Free AI plans:</strong> no bank link. Download your bank's statement file each week and give it to your AI. That is still read-only.</p>
+</div>
+
+<h2>2. How to link safely</h2>
+<ul>
+<li><strong>Best:</strong> when you link, you are sent to your bank's own login page. Plaid then gets a limited token, not your password.</li>
+<li><strong>If your bank asks you to type its password into Plaid instead,</strong> think about using the statement-file method for that account.</li>
+<li><strong>Turn on two-factor sign-in</strong> at every bank you link.</li>
+<li><strong>Link only the accounts you need</strong> for your weekly close-out.</li>
+</ul>
+
+<h2>3. What the AI will never do</h2>
+<ul>
+<li>Ask for, accept or keep a password, PIN, security answer, one-time code, full account or card number, routing number or Social Security number.</li>
+<li>Start a payment, transfer, trade, bill pay or account change, even if you ask it to.</li>
+<li>Use more than an account's nickname and last 4 digits ("My Checking ••5058").</li>
+<li>Guess an amount when data is missing. It says "no data since" a date instead.</li>
+</ul>
+<p class="note">If you ever paste one of those numbers by mistake, the AI will not repeat it and will tell you to delete it.</p>
+
+<h2>4. What never goes public</h2>
+<ul>
+<li>Your bank and card data, receipts, pay stubs and account labels stay in your private GitHub folder and AI project.</li>
+<li>Only the <strong>handoff packet</strong> goes to the team, and only after you read it: shares per $100, findings, telemetry levels and how many letters you sent. No names, dollar amounts, account numbers or addresses.</li>
+<li>Your performance score stays private to you.</li>
+</ul>
+
+<h2>5. Your monthly 5-minute check</h2>
+<ol>
+<li>Open <a href="https://my.plaid.com">my.plaid.com</a> and make sure only the apps you expect are connected.</li>
+<li>Check your bank's "linked apps" or "third-party access" page.</li>
+<li>Unlink anything you no longer use. Unlinking stops new reads, but it does not erase figures already saved in your chats.</li>
+</ol>
+
+<h2>6. Your GitHub account</h2>
+<ul>
+<li>Turn on two-factor sign-in with an authenticator app on your phone.</li>
+<li>Save your recovery codes, and print one copy kept away from your computer.</li>
+<li>Check before you upload: no account numbers, Social Security numbers or home address. GitHub keeps old versions, so deleting a file later does not erase it.</li>
+</ul>
+
+<h2>7. Photos and letters</h2>
+<ul>
+<li>Blur your signature and flatten the image so the blur cannot be undone. Clear signatures are never accepted.</li>
+<li>Remove the photo's location data before sharing (your phone's share options can do this).</li>
+<li>Cover your return address.</li>
+</ul>
+
+<h2>8. If something leaks</h2>
+<ol>
+<li><strong>Stop it the same day.</strong> Make your folder private, or tell your team admin.</li>
+<li><strong>Change what leaked.</strong> Unlink the bank, ask your bank for a new card or account number if a full number leaked, and replace any exposed access key.</li>
+<li><strong>Erase old versions.</strong> Deleting a file alone is not enough.</li>
+<li><strong>Tell anyone affected.</strong></li>
+<li><strong>Note it, without details,</strong> in the next team report so the process improves.</li>
+</ol>
+
+<h2>Who owns which risk</h2>
+<p>You own your data, devices and accounts, and you carry these risks. Runtime Republic never holds your money, passwords, PIN or account numbers. The full list is in the <a href="../agreement/">member agreement</a> (draft, under attorney review).</p>
+
+<p class="note">Runtime Republic is not affiliated with Plaid, Anthropic, OpenAI or GitHub. Each service has its own terms, which you accept yourself.</p>
+<footer>Runtime Republic is a goodwill project of Lean Office Pro LLC. Free. Accepts no donations.<br>RuntimeRepublic.com · BlueprintLiberty.com</footer>
+</body>
+</html>
