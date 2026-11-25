@@ -1,6 +1,6 @@
 # Work cards
 Register for RuntimeRepublic/RuntimeRepublic.github.io. Every card adds its own line
-here as its first step. Next free number: RRW-CWC-033.
+here as its first step. Next free number: RRW-CWC-034.
 
 | ID | Title | Manager | Agent (named by James) | Status |
 |---|---|---|---|---|
@@ -36,3 +36,4 @@ here as its first step. Next free number: RRW-CWC-033.
 | RRW-CWC-030 | How it works: the weekly folder seal page; link from the landing page | Claude | none (drafted by Claude directly) | In review |
 | RRW-CWC-031 | Press release: Team America launch (Nov 22, 2026); image, full release page, join page and press list | Claude | none (drafted by Claude directly) | In review |
 | RRW-CWC-032 | Essay series: Five Weeks on the Team, series page, 10 episode pages and images; link from the landing page | Claude | none (drafted by Claude directly) | In review |
+| RRW-CWC-033 | Discord on the landing page; Invite someone page with the standard recruitment message | Claude | none (drafted by Claude directly) | In review |
