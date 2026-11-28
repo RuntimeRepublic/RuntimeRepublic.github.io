@@ -375,6 +375,22 @@ function build(){onboarding();rule72();survey();replies();frameworks();cebudgets
 build();
 new MutationObserver(()=>setTimeout(addBars,0)).observe(document.getElementById('main'),{childList:true,subtree:false});
 })();
+
+
+(function(){
+const NEW='https://github.com/RuntimeRepublic/RuntimeRepublic.github.io/issues/new?template=suggestion.yml';
+const TABN={};(typeof SECTIONS!=='undefined'?SECTIONS:[]).forEach(s=>s.tabs.forEach(t=>TABN[t[0]]=s.name+' → '+t[1]));
+const st=document.createElement('style');st.textContent='.sugg{font-size:12px;font-weight:400;margin-left:10px;white-space:nowrap}.sugg a{color:#2A62B0}.suggtop{text-align:right;margin:-4px 0 6px}';document.head.appendChild(st);
+function url(where){return NEW+'&title='+encodeURIComponent('Suggestion: '+where)+'&section='+encodeURIComponent(where)+'&labels=suggestion'}
+function link(where){return `<span class="sugg" data-sugg="1"><a href="${url(where)}" target="_blank" rel="noopener">Suggest an improvement</a></span>`}
+function addAll(){document.querySelectorAll('#main > section[id^="p-"], #main > [id^="p-"]').forEach(sec=>{
+  const tab=sec.id.slice(2),tn=TABN[tab]||tab;
+  if(!sec.querySelector(':scope > .suggtop')){sec.insertAdjacentHTML('afterbegin',`<div class="suggtop" data-sugg="1">${link(tn)}</div>`)}
+  sec.querySelectorAll('h2,h3').forEach(h=>{if(h.querySelector('[data-sugg]'))return;const t=h.textContent.trim();if(!t)return;h.insertAdjacentHTML('beforeend',link(tn+' → '+t))});
+ })}
+let busy=false;const run=()=>{if(busy)return;busy=true;try{addAll()}finally{busy=false}};
+run();new MutationObserver(()=>{if(!busy)setTimeout(run,0)}).observe(document.getElementById('main'),{childList:true,subtree:true});
+})();
 </script>
 <script>
 (function(){
